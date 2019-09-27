@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Kamil</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #202020;
+        }
+
+        .container .container__heading {
+            color: #ffffff;
+            font-size: 4rem;
+        }
+
+        .container .container__subtitle {
+            color: #ffffff;
+            font-size: 3rem;
+            padding-top: 1rem;
+        }
+
+        .container .container__time {
+            color: #ffffff;
+            font-size: 3rem;
+            padding-top: 1rem; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="container__heading">Witaj Kamil</h1>
+        <p class="container__time"></p>
+        <h3 class="container__subtitle">Życze miłego dnia</h3>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded' , () => {
+            function addZero(time) {
+                if(time < 10) {
+                    time = "0" + time;
+                }
+                return time;
+            }
+
+            function timeSet() {
+                const dateNow = new Date(); 
+            
+                const timeCreate = {
+                    hour: addZero(dateNow.getHours()),
+                    minute: addZero(dateNow.getMinutes()),
+                    second: addZero(dateNow.getSeconds())
+                }
+                
+                const message = `${timeCreate.hour}:${timeCreate.minute}:${timeCreate.second}`;
+                
+                document.querySelector('.container__time').innerHTML = message;
+                
+            }
+
+            timeSet();
+
+            setInterval(() => timeSet(), 1000);
+        });
+    </script>
+</body>
+</html>
